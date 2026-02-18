@@ -1,0 +1,81 @@
+<div id="starry-background" (mousemove)="onMouseMove($event)">
+  <div #star1 class="star-container">
+    <div class="star-shine"></div>
+  </div>
+  <div #star2 class="star-container">
+    <div class="star-shine"></div>
+  </div>
+  <div #star3 class="star-container">
+    <div class="star-shine"></div>
+  </div>
+  
+  <div class="slanted-overlay"></div>
+
+  <section id="hero-section">
+    <div class="hero-content">
+      <h1 id="hero-head">
+        <div class="rotation-container">
+          <div class="rotating-items">
+            <span>FRONT END<br>DEVELOPER</span>
+            <span>UI/UX<br>FOCUSED</span>
+            <span>MINIMALISTIC<br>DESIGNER</span>
+          </div>
+        </div>
+      </h1>
+
+      <div class="hero-subtext">
+        <h3>Hello! I am Kevin,</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+      </div>
+      
+      <div class="resume-btn-container">
+        <a routerLink="/resume" id="resume-button">
+          <span>SEE MY RESUME</span>
+          <img src="assets/images/document-white.png" alt="icon">
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image-container">
+      <img src="assets/images/me.png" class="body-img" alt="Kevin">
+    </div>
+  </section>
+</div>
+
+<div id="main-content">
+  <div class="cards">
+      <div id="card-img">
+        <img src="assets/images/meCard.jpg" alt="">
+        <div class="image-overlay"></div>
+      </div>  
+    <h1 class="card-head">About Me</h1>
+    <p class="card-content">I bridge the gap between design and technology, ensuring every pixel serves a purpose.</p>
+    <div class="card-button-wrapper">
+      <a routerLink="/about" class="card-button">Learn More</a>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div id="card-img">
+      <img src="" alt="">
+      <div class="image-overlay"></div>
+    </div>
+    <h1 class="card-head">Let's Work Together</h1>
+    <p class="card-content">Currently available for freelance projects and full-time opportunities. Let's build something great.</p>
+    <div class="card-button-wrapper">
+      <a routerLink="/contact" class="card-button">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div id="card-img">
+      <img src="assets/images/lahermosa.png" alt="">
+      <div class="image-overlay"></div>
+    </div>
+    <h1 class="card-head">Featured Project</h1>
+    <p class="card-content">Explore my latest work, ranging from complex web apps to minimal landing pages.</p>
+    <div class="card-button-wrapper">
+      <a routerLink="/about" class="card-button">View Project</a>
+    </div>
+  </div>
+</div>

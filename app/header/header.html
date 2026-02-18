@@ -1,0 +1,31 @@
+<nav id="navbar">
+  <div id="nav-logo">
+    <a routerLink="/">
+      <img src="/assets/images/logo-black.png" alt="Logo">
+    </a>
+  </div>
+  
+  <div class="nav-links-container" #navContainer (mouseleave)="resetSlider()">
+    <div class="nav-slider" 
+         [class.shining]="isShining"
+         [style.width.px]="sliderWidth" 
+         [style.left.px]="sliderLeft">
+    </div>
+
+    <a routerLink="/" routerLinkActive="active" 
+       [routerLinkActiveOptions]="{exact: true}" 
+       #navLink #homeLink (mouseenter)="updateSlider(homeLink)">Home</a>
+       
+    <a routerLink="/about" routerLinkActive="active" 
+       #navLink #aboutLink (mouseenter)="updateSlider(aboutLink)">About</a>
+       
+    <a routerLink="/projects" routerLinkActive="active" 
+       #navLink #projectsLink (mouseenter)="updateSlider(projectsLink)">Projects</a>
+       
+    <a routerLink="/resume" routerLinkActive="active" 
+       #navLink #resumeLink (mouseenter)="updateSlider(resumeLink)">Resume</a>
+       
+    <a routerLink="/contact" routerLinkActive="active" 
+       #navLink #contactLink (mouseenter)="updateSlider(contactLink)">Contact</a>
+  </div>
+</nav>

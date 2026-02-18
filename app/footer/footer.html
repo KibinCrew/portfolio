@@ -1,0 +1,36 @@
+<footer id="main-footer">
+  <div class="footer-glass-container">
+    
+    <div class="footer-section info">
+      <h4 class="name">Kevin Galang</h4>
+      <p class="role">Front End Developer</p>
+    </div>
+
+    <div class="footer-section brand">
+      <div class="footer-logo">
+        <a routerLink="/"><img src="/assets/images/logo-black.png" alt="Logo"></a>
+      </div>
+      <p class="copyright">© {{ currentDate | date: 'yyyy' }} Kevin Galang. All rights reserved.</p>
+    </div>
+
+    <div class="footer-section utility">
+      <div class="links-group">
+        <p class="section-label">Quick Links</p>
+        <div class="quick-links">
+            <a routerLink="/" routerLinkActive="active">Home</a>
+            <a routerLink="/about" routerLinkActive="active">About</a>
+            <a routerLink="/projects" routerLinkActive="active">Projects</a>
+            <a routerLink="/resume" routerLinkActive="active">Resume</a>
+            <a routerLink="/contact" routerLinkActive="active">Contact</a>
+        </div>
+      </div>
+      
+      <div class="social-icons">
+        <a href="https://github.com/KibinCrew" target="_blank"><img src="/assets/images/github.png" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/kevin-galang-25124232a/" target="_blank"><img src="/assets/images/linkedin.png" alt="LinkedIn"></a>
+        <a href="mailto:mkevingalang@gmail.com"><img src="/assets/images/email.png" alt="Email"></a>
+      </div>
+    </div>
+
+  </div>
+</footer>

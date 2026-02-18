@@ -1,0 +1,219 @@
+/* FONT IMPORTS */
+@font-face {
+  font-family: 'Saira Condensed';
+  src: url('/assets/fonts/Saira_Condensed/SairaCondensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Saira Condensed';
+  src: url('/assets/fonts/Saira_Condensed/SairaCondensed-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  position: relative; 
+  padding: 1.5rem 2rem;
+  width: 100%;
+  height: 120px; /* Combined the two #navbar height declarations */
+  border-bottom: 1px solid #f0f0f0;
+}
+
+#nav-logo {
+  position: absolute;
+  left: 7.5rem;
+}
+
+#nav-logo img {
+  height: 80px;
+  display: block;
+}
+
+/* NAVIGATION CONTAINER */
+.nav-links-container {
+  position: relative; /* Necessary for absolute positioning of slider */
+  margin: 0 auto; 
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  background: rgba(51, 51, 51, 0.06); 
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+/* LINK BUTTONS */
+.nav-links-container a {
+  position: relative;
+  z-index: 2; /* Ensures text stays on top of the sliding pill */
+  font-family: 'Saira Condensed', sans-serif;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  font-weight: 300;
+  padding: 10px 22px;
+  border-radius: 50px;
+  transition: color 0.3s ease; /* Only transition color now */
+  letter-spacing: 0.03em;
+  background: transparent !important; /* Removed individual backgrounds */
+}
+
+/* TEXT COLOR FOR ACTIVE STATE */
+.nav-links-container a.active {
+  color: #ffffff; /* */
+}
+
+/* HOVER STATE FOR NON-ACTIVE LINKS */
+.nav-links-container a:hover:not(.active) {
+  color: #000;
+}
+
+/* Base Slider Logic */
+.nav-slider {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  border-radius: 50px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Active Pill */
+.active-pill {
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links-container {
+  position: relative;
+  margin: 0 auto; 
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  background: rgba(51, 51, 51, 0.06); 
+  border-radius: 50px;
+  z-index: 1;
+}
+
+.nav-links-container a {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+}
+
+/* The Sliding Pill */
+.nav-slider {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  background: rgba(51, 51, 51, 0.06); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50px;
+  z-index: 1;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+.nav-links-container a.active {
+  color: #000000;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* THE SHINE ELEMENT */
+.nav-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%; /* Start off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: skewX(-25deg); /* Create the angled glint */
+}
+
+/* Triggered via Angular */
+.nav-slider.shining::after {
+  animation: glintSweep 0.6s ease-in-out;
+}
+
+@keyframes glintSweep {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+/* --- MOBILE NAVIGATION RESPONSIVENESS (Screens smaller than 768px) --- */
+@media (max-width: 768px) {
+  #navbar {
+    flex-direction: column; /* Stack logo on top of links */
+    height: auto;           /* Let height grow with stacked content */
+    padding: 0.8rem 1rem;   /* Tighter vertical padding */
+    gap: 10px;              /* Smaller gap between logo and pill */
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  #nav-logo {
+    position: static;       /* Remove the absolute positioning */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  #nav-logo img {
+    height: 45px;           /* Reduced from 60px to keep it proportional */
+    width: auto;
+  }
+
+  .nav-links-container {
+    width: auto;            /* Let the container hug the links */
+    max-width: 95%;         /* Prevent it from hitting screen edges */
+    gap: 2px;
+    padding: 3px;           /* Slim border around the slider */
+    overflow-x: auto;       /* Allows swiping if screen is very narrow */
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(51, 51, 51, 0.04); /* Slightly lighter background */
+  }
+
+  /* Hide the scrollbar but keep functionality */
+  .nav-links-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links-container a {
+    font-size: 14px;        /* Smaller font size for better fit */
+    padding: 6px 12px;      /* Reduced vertical padding to make the pill "thinner" */
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Adjust the slider (dark part) to match the new slim height */
+  .nav-slider {
+    top: 3px;
+    bottom: 3px;
+    border-radius: 50px;
+  }
+}
+
+
+
