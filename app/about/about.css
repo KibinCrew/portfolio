@@ -45,11 +45,9 @@
     height: 400px;
     border-radius: 50%;
     position: relative;
-    /* Removed black background tint */
     background: transparent; 
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    /* Changed animation to floating */
     animation: floatingEffect 6s ease-in-out infinite;
 }
 
@@ -58,7 +56,6 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    /* Removed grayscale and brightness filters for a "normal" look */
     display: block;
 }
 
@@ -70,7 +67,6 @@
     height: 100%;
     border-radius: 50%;
     pointer-events: none;
-    /* Creates a subtle "glass" reflection on top without tinting the photo */
     background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
 }
 
@@ -161,139 +157,161 @@
 }
 
 /* ABOUT MAIN CONTENT */
-.about-content{
-    justify-content: center;
+.about-content {
     display: flex;
-    padding-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
     background: #0e0e0e;
     color: #fff;
+    gap: 80px;
 }
 
-.edu{
+.edu {
+    margin-top: -40px;
     left: 50.5%;
     position: absolute;
     transform: translate(-50%, -50%);
     font-family: 'Saira Condensed', sans-serif;
-    font-size:  8vw;
+    font-size: 8vw;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.7);
-    z-index: 1;
+    color: #fff;
     pointer-events: none;
     letter-spacing: 15px;
 }
 
-.card{
-    margin-top: 65px;
+.card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 800px;
-    height: 700px;
+    height: auto;
+    min-height: 500px;
     background: rgba(51, 51, 51, 0.06);
     border-radius: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     cursor: pointer;
     transform: perspective(800px) rotateX(45deg) scale(0.7);
-    box-shadow: 0 25px 50px rgba(100, 120, 150, 0.3),
-    inset 0 -4px 8px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+    inset 0 -4px 8px rgba(255, 255, 255, 0.1);
     transition: transform 0.5s ease, box-shadow 0.6s ease;
+    padding: 30px 0;
     position: relative;
-    overflow: hidden;
 }
 
-.card:hover{
-    transform: rotateX(0deg) scale(1) translateY(-10px);
-    box-shadow: 0 35px 70px rgba(80, 100, 130, 0.35),
-    inset 0 -6px 10px rgba(255, 255, 255, 0.7);
-}
-
-.card:hover::after {
-    opacity: 1;
-    background: rgba(255, 255, 255, 0.05); /* Very faint tint */
-    backdrop-filter: blur(15px);           /* The "Glassify" effect */
-    -webkit-backdrop-filter: blur(15px);
-}
-
-/* Container for the text within the glass card */
-.card-inner {
-    display: flex;
+/* SKILLS SECTION - Using Grid to force Header on top and Cards side-by-side */
+.skills-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for the two cards */
+    justify-items: center;
     gap: 20px;
-    align-items: flex-start;
-    text-align: left;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 50px;
 }
 
-/* Metadata Tag */
-
-
-.category-tag {
-    font-size: 35px;
-    letter-spacing: 2px;
-    color: #666;
-    font-weight: bold;
-    display: block;
-    margin-left: 30px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-/* Main Heading */
-.edu-head {
+/* Make the Skill Head span both columns to stay on top */
+.skill-head {
+    grid-column: 1 / span 2; 
     font-family: 'Saira Condensed', sans-serif;
-    font-size: 24px;
-    color: #fff;
-    margin: 0;
-    line-height: 1.1;
-    margin-left: 30px;
+    font-size: 6vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1);
+    letter-spacing: 15px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* Location Text */
-.edu-location {
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    color: #999;
-    margin: 5px 0 15px 0;
-    margin-left: 30px;
+.card2 {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: auto;
+    min-height: 400px;
+    background: rgba(51, 51, 51, 0.06);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transform: perspective(800px) rotateX(45deg) scale(0.7);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+    inset 0 -4px 8px rgba(255, 255, 255, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.6s ease;
+    padding: 30px 0;
+    position: relative;
 }
 
-/* Date Badge */
-.date-badge {
-    display: inline-block;
-    padding: 5px 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    font-size: 12px;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    margin-left: 30px;
+.card:hover, .card2:hover {
+    transform: rotateX(0deg) scale(1) translateY(-10px);
+    box-shadow: 0 35px 70px rgba(255, 255, 255, 0.05),
+    inset 0 -6px 10px rgba(255, 255, 255, 0.2);
 }
-
 
 .card-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 40px;
+    padding: 20px 40px;
     box-sizing: border-box;
 }
 
-.logo {
-    display: flex;
-    justify-content: flex-end; 
-    overflow: visible; 
+/* Inner Card Typography */
+.tech-head, .soft-head {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 35px;
+    letter-spacing: 2px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 10px;
 }
 
-.logo img {
-    height: 140px;
+.category-tag {
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #444;
+    font-weight: bold;
+    display: block;
+    margin-left: 30px;
+}
+
+.edu-head {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    margin-left: 30px;
+}
+
+.edu-location {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #999;
+    margin-left: 30px;
+}
+
+.date-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #fff;
+    margin-left: 30px;
+}
+
+.skills {
+    font-family: 'Poppins', sans-serif;
+    color: #888;
+    margin: 5px 40px;
+    font-size: 15px;
+}
+
+.logo img, .front img {
+    height: 100px;
     width: auto;
-    filter: grayscale(1) brightness(0.6) opacity(0.3) 
-    drop-shadow(0 0 5px rgba(255, 255, 255, 0));
-    transform: translateX(20px); 
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    filter: grayscale(1) opacity(0.3);
+    transition: all 0.6s ease;
 }
 
-.card:hover .logo img {
-    filter: grayscale(0) brightness(1) opacity(1) 
-    drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-    transform: translateX(0); 
+.card:hover .logo img, .card2:hover .front img {
+    filter: grayscale(0) opacity(1);
 }
